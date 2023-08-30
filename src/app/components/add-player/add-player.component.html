@@ -1,0 +1,30 @@
+<app-banner title="add Player"></app-banner>
+
+
+<div class="site-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <form [formGroup]="addPlayerForm">
+
+          <div class="form-group">
+            <input type="text" formControlName="name" class="form-control" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <input type="number" formControlName="age" class="form-control" placeholder="Age">
+          </div>
+          <div class="form-group">
+            <input type="text" formControlName="position" class="form-control" placeholder="Position">
+          </div>
+
+
+
+          <div class="form-group text-center">
+            <input type="submit" (click)="addPlayer()" class="btn btn-primary py-3 px-5 w-50 " value="Add Player">
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

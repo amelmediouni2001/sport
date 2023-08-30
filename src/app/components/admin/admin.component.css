@@ -1,0 +1,6 @@
+/* Add this CSS in your component's CSS file or a global CSS file */
+.custom-search-input {
+  width: 100px; /* Adjust the width as needed */
+  padding: 5px 10px; /* Adjust padding as needed */
+  font-size: 14px; /* Adjust font size as needed */
+}

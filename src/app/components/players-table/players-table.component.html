@@ -1,0 +1,41 @@
+<div class="site-section bg-dark">
+    <div class="container">
+
+
+        <div class="col-lg-12">
+          
+          <div class="widget-next-match">
+            <table text-center class="table custom-table text-center ">
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Position</th>
+                  <th >Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let x of playersTab">
+                  <td>{{x.id}}</td>
+                  <td>{{x.name}}</td>
+                  <td>{{x.age}}</td>
+                  <td>{{x.position}}</td>
+                  <!-- Boutons actions -->
+                  <td>
+                    <button type="button" (click)="displayPlayer(x.id)" class="btn btn-success">Dsiplay</button>
+                    <button type="button" (click)="editPlayer(x.id)" class="btn btn-warning mx-3">Edit</button>
+                    <button type="button" (click)="deletePlayer(x.id)" class="btn btn-info">Delete</button>
+
+                  </td>
+
+                </tr>
+ 
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+  </div> <!-- .site-section -->

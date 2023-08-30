@@ -1,0 +1,52 @@
+<app-banner title="Weather"></app-banner>
+
+
+<div class="site-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <form [formGroup]="weatherForm">
+                    <div class="form-group">
+                        <input type="text" formControlName="city" class="form-control" placeholder="city">
+                    </div>
+
+                    <div style="color: red;" *ngIf="weatherForm.controls['city'].invalid &&
+            (weatherForm.controls['city'].touched ||
+            weatherForm.controls['city'].dirty)">
+                        <div *ngIf="weatherForm.controls['city'].errors?.required">
+                            city is required
+                        </div>
+
+                    </div>
+
+                    <div class="form-group text-center">
+                        <input type="submit" (click)="searchWeather()" [disabled]="weatherForm.invalid"
+                            class="btn btn-primary py-3 px-5 w-50" value="Search">
+                    </div>
+                    <!-- Simplified weather display section -->
+                    <div  *ngIf="weatherData" style="text-align: center; " class="weather-display">
+                        <img [src]="icon" alt="Weather Icon" class="weather-icon">
+                        <div class="weather-data">
+                            <p>Temperature: {{ weatherData.temp }}°C</p>
+                            <p>Pressure: {{ weatherData.pressure }} hPa</p>
+                            <p>Humidity: {{ weatherData.humidity }}%</p>
+                            <p>Wind Speed: {{ weatherData.wind }} m/s</p>
+                        </div>
+                    </div>
+
+
+
+
+                    <!-- <div *ngIf="errorMsg" style="color: red;">{{ errorMsg }}</div> -->
+
+
+
+                </form>
+
+
+
+
+
+            </div>
+        </div>
+    </div>

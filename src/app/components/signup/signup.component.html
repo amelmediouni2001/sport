@@ -1,0 +1,102 @@
+<app-banner title="Sign Up"></app-banner>
+<!-- test pipe -->
+{{'AMEL'| asterix}}
+<br>
+{{'amel' | reverse}}
+<!-- TDF -->
+
+<div class="site-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <form [formGroup]="signupForm">
+          <div class="form-group">
+            <input type="text" formControlName="firstName" class="form-control" placeholder="first name">
+          </div>
+
+
+          <div *ngIf="signupForm.controls['firstName'].invalid &&
+                          (signupForm.controls['firstName'].touched ||
+                          signupForm.controls['firstName'].dirty)">
+            <div *ngIf="signupForm.controls['firstName'].errors?.required">
+              First Name is required
+            </div>
+            <div *ngIf="signupForm.controls['firstName'].errors?.minlength">
+              First Name must be at least 3 characters long
+            </div>
+          </div>
+
+
+
+          <div class="form-group">
+            <input type="text" formControlName="lastName" class="form-control" placeholder="last name">
+          </div>
+          <div *ngIf="signupForm.controls['lastName'].invalid &&
+                          (signupForm.controls['lastName'].touched ||
+                          signupForm.controls['lastName'].dirty)">
+            <div *ngIf="signupForm.controls['lastName'].errors?.required">
+              Last Name is required
+            </div>
+            <div *ngIf="signupForm.controls['lastName'].errors?.minlength">
+              Last Name must be at least 5 characters long
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="email" formControlName="email" class="form-control" placeholder="email">
+          </div>
+          <span  style="color: red;" >{{errorMsg}}</span>
+          <div *ngIf="signupForm.controls['email'].invalid &&
+                          (signupForm.controls['email'].touched ||
+                          signupForm.controls['email'].dirty)">
+            <div *ngIf="signupForm.controls['email'].errors?.required">
+              email is required
+            </div>
+            <div *ngIf="signupForm.controls['email'].errors?.email">
+              Format email invalid
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="password" formControlName="pwd" class="form-control" placeholder="password">
+          </div>
+          <div *ngIf="signupForm.controls['pwd'].invalid &&
+                          (signupForm.controls['pwd'].touched ||
+                          signupForm.controls['pwd'].dirty)">
+            <div *ngIf="signupForm.controls['pwd'].errors?.required">
+              Password is required
+            </div>
+            <div *ngIf="signupForm.controls['pwd'].errors?.minlength">
+              Password must be at least 6 characters long
+            </div>
+            <div *ngIf="signupForm.controls['pwd'].errors?.minlength">
+              Password must be at least 12 characters long
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="phone" formControlName="tel" class="form-control" placeholder="tel">
+          </div>
+          <div class="form-group" style="visibility: hidden;" >
+            <input type="file" #filePicker (change)="onImageSelected($event)" >
+          </div>
+          <div class="form-group text-center"  >
+            <button class="btn btn-warning" (click)="filePicker.click()" > select ur avatr   </button>
+          </div>
+          <!-- Display the selected image preview -->
+          <div  class="form-group text-center"  >
+          <img [src]="imagePreview" *ngIf="imagePreview" width="200px" height="200px"  class="img-preview">
+        </div>
+
+
+
+
+          <div class="form-group text-center">
+            <input type="submit" (click)="signup()" class="btn btn-primary py-3 px-5 w-50" value="signup">
+
+          </div>
+        </form>
+        {{signupForm.value | json}}
+        <br>
+        {{signupForm.valid | json}}
+      </div>
+    </div>
+  </div>
+</div>

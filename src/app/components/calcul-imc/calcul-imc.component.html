@@ -1,0 +1,61 @@
+<app-banner title="calcul imc"></app-banner>
+
+
+<div class="site-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <form [formGroup]="calculIMCform">
+                    <div class="form-group">
+                        <input type="text" formControlName="name" class="form-control" placeholder="name">
+                    </div>
+
+                    <div style="color: red;" *ngIf="calculIMCform.controls['name'].invalid &&
+            (calculIMCform.controls['name'].touched ||
+            calculIMCform.controls['name'].dirty)">
+                        <div *ngIf="calculIMCform.controls['name'].errors?.required">
+                            Name is required
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" formControlName="taille" class="form-control" placeholder="taille">
+                    </div>
+
+                    <div style="color: red;" *ngIf="calculIMCform.controls['taille'].invalid &&
+            (calculIMCform.controls['taille'].touched ||
+            calculIMCform.controls['taille'].dirty)">
+                        <div *ngIf="calculIMCform.controls['taille'].errors?.required">
+                            Taille is required
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" formControlName="poid" class="form-control" placeholder="poid">
+                    </div>
+
+                    <div style="color: red;" *ngIf="calculIMCform.controls['poid'].invalid &&
+            (calculIMCform.controls['poid'].touched ||
+            calculIMCform.controls['poid'].dirty)">
+                        <div *ngIf="calculIMCform.controls['poid'].errors?.required">
+                            Poid is required
+                        </div>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <input type="submit" (click)="calcul()" class="btn btn-primary py-3 px-5 w-50" value="calcul">
+                    </div>
+
+                    <p *ngIf="resMes" class="result-message">{{ resMsg }}</p>
+
+
+
+
+
+                </form>
+
+
+
+
+
+            </div>
+        </div>
+    </div>

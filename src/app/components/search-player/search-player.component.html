@@ -1,0 +1,59 @@
+<app-banner title="Search Player "></app-banner>
+
+
+<div class="site-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <form [formGroup]="searchPlayerForm">
+
+                    <!--Start Name Input -->
+                    <div class="form-group">
+                        <input type="text" formControlName="name" class="form-control" placeholder="Name">
+                    </div>
+
+                    <div style="color: red;" *ngIf="searchPlayerForm.controls['name'].invalid &&
+            (searchPlayerForm.controls['name'].touched ||
+            searchPlayerForm.controls['name'].dirty)">
+                        <div *ngIf="searchPlayerForm.controls['name'].errors?.required">
+                            Player Name is required
+                        </div>
+
+                    </div>
+                    <!-- End Name Input -->
+                    <!--Start Age Input -->
+                    <div class="form-group">
+                        <input type="number" formControlName="age" class="form-control" placeholder="Age">
+                    </div>
+                    <div style="color: red;" *ngIf="searchPlayerForm.controls['age'].invalid &&
+                                (searchPlayerForm.controls['age'].touched ||
+                                searchPlayerForm.controls['age'].dirty)">
+                        <div *ngIf="searchPlayerForm.controls['age'].errors?.required">
+                            Player Age is required
+                        </div>
+                    </div>
+                    <!-- End Age Input -->
+
+
+
+                    <div class="form-group text-center">
+                        <input type="submit" (click)="search()" [disabled]="searchPlayerForm.invalid"
+                            class="btn btn-primary py-3 px-5 w-50" value="Search">
+                    </div>
+
+                    <div *ngIf="players?.length != 0" class="mt-4">
+                        <div *ngFor="let p of players">
+                            <strong>Player Name:</strong> {{ p.name }}
+                            | <strong>Player Age:</strong> {{ p.age }}
+                            | <strong>Player Position:</strong> {{ p.position }}
+                        </div>
+                    </div>
+                    <div style="color: red;" *ngIf="players?.length == 0">Not found</div>
+
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>

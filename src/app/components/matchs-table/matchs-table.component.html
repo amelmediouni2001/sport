@@ -1,0 +1,60 @@
+<div class="site-section bg-dark">
+    <div class="container">
+
+      <form>
+        <div class="text-center">
+        <label for="">Filter By team </label>
+        <input type="text" [(ngModel)]='term' [ngModelOptions]="{standalone: true}">
+        </div>
+       </form>
+      
+           <p>here value : {{term}}</p>
+
+        <div class="col-lg-12">
+          
+          <div class="widget-next-match">
+            <table text-center class="table custom-table text-center ">
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>Score one</th>
+                  <th>Score two</th>
+                  <th>Team one</th> 
+                  <th>Team two</th>
+                  <th >Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- TR will be generated matchesTab.length times -->
+
+                <!-- <tr  *ngFor="let m of matchesTab | filterPipe: term"> -->
+                <tr  *ngFor="let m of pageOfItems | filterPipe: term">
+                  <td>{{m._id}}</td>
+                  <td>{{m.scoreOne}}</td>
+                  <td>{{m.scoreTwo}}</td>
+                  <td>{{m.teamOne}}</td>
+                  <td>{{m.teamTwo}}</td>
+                  <!-- Boutons actions -->
+                  <td>
+                    <button type="button" (click)="displayMatch(m._id)" class="btn btn-success">Dsiplay</button>
+                    <button type="button" (click)="editMatch(m._id)" class="btn btn-warning mx-3">Edit</button>
+                    <button type="button" (click)="deleteMatch(m._id)" class="btn btn-info">Delete</button>
+
+                  </td>
+
+                </tr>
+ 
+              </tbody>
+              
+            </table>
+            <div class="card-footer pb-0 pt-3">
+              <jw-pagination 
+             [items]="matchesTab" [pageSize]="2" (changePage)="onChangePage($event)"></jw-pagination>
+             </div>
+          </div>
+
+        </div>
+      </div>
+      
+  </div> <!-- .site-section -->
+  
