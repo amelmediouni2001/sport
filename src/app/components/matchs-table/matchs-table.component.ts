@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { T } from 'src/app/data/data';
 import { MatchService } from 'src/app/services/match.service';
 
 @Component({
