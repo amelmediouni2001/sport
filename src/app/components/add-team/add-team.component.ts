@@ -19,8 +19,9 @@ addTeamForm: FormGroup;
   addTeam(){
     alert("add Team clicked");
     console.log("here object", this.team);
-    this.tService.addTeam(this.team).subscribe((data) => {
-      console.log("here response from BE", data.msg);
+    this.tService.addTeam(this.team).subscribe(
+      (data) => {
+      console.log("here response after adding team from BE", data.msg);
       this.router.navigate(["admin"]);
       
     } );

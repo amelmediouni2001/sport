@@ -5,12 +5,14 @@ const mongoose = require("mongoose");
 const teamSchema  = mongoose.Schema({
     name: String,
     owner: String,
-    stadium: Number,
+    stadium: String,
 
 });
 
 //affect model name to schema
-const team = mongoose.model("teamModel", teamSchema);
+const team = mongoose.model("Team", teamSchema);
 
 //export team
 module.exports = team;
+
+

@@ -79,7 +79,7 @@ secret: secretKey,
 //models importation
 const MatchModel = require("./models/match");
 // const PlayerModel = require("./models/player");
-const TeamModel = require("./models/team");
+const Team = require("./models/team");
 // const StadiumModel = require("./models/stadium");
 const ImcModel = require("./models/imc");
 const UserModel = require("./models/user");
@@ -305,17 +305,17 @@ app.get("/matches/search/:scoreOne/:scoreTwo", (req, res) => {
 
 
 
-// //Business Logic : post add player 
-// app.post("/players", (req, res) => {
-//     //traitement de la requete
-//     console.log("here into BL : Add player", req.body);
-//     // player => instance de type player
-//     let playerObj = new PlayerModel(req.body);
-//     //Save => methode predefinie mongoose
-//     playerObj.save();
+//Business Logic : post add player 
+app.post("/players", (req, res) => {
+    //traitement de la requete
+    console.log("here into BL : Add player", req.body);
+    // player => instance de type player
+    let playerObj = new PlayerModel(req.body);
+    //Save => methode predefinie mongoose
+    playerObj.save();
 
-//     res.json({ msg: "Added with succeess" })
-// });
+    res.json({ msg: "Added with succeess" })
+});
 
 // //Business Logic : put update player  
 // app.put("/players", (req, res) => {
@@ -403,9 +403,9 @@ app.get("/teams", (req, res) => {
     //traitement de la requete
     //traitement de la requete y compris la reponse
     console.log("here into BL : Get All teams");
-    TeamModel.find().then(
+    Team.find().then(
         (data) => {
-            res.json({ team: data });
+            res.json({ teams: data });
 
         }
     )
@@ -427,18 +427,25 @@ app.get("/teams/:id", (req, res) => {
 
 
 
-
 //Business Logic : post add team 
 app.post("/teams", (req, res) => {
     //traitement de la requete
-    console.log("here into BE : Add team", req.body);
+    console.log("here into BL : Add team", req.body);
     // team => instance de type team
-    let teamObj = new TeamModel(req.body);
+    let teamObj = new Team(req.body);
     //Save => methode predefinie mongoose
-    teamObj.save();
+    teamObj.save(
+        (err, doc) => {
+            console.log("here retour error", err);
+            console.log("here retour document", doc);
+            err ? res.json({ msg: "error" }) : res.json({ msg: "Added with succeess" });
 
-    res.json({ msg: "Added with succeess" })
+
+
+        });
+
 });
+
 
 //Business Logic : put update team  
 app.put("/teams", (req, res) => {

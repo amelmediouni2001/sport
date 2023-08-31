@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class TeamService {
   //BE adress
-  teamURL: string ="http://localhost:3000" ;
+  teamURL: string ="http://localhost:3000/teams" ;
   // Boustagi
   constructor(private http: HttpClient) { }
  // Request to get all teams
